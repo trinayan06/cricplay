@@ -21,7 +21,7 @@ export default function Signup() {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
-    navigate('/verify');
+    navigate('/');
   };
 
   useEffect(() => {
@@ -42,40 +42,24 @@ export default function Signup() {
     }
 
     try {
-      // Sync with Supabase Database
-      const supabaseRes = await fetch(`${BASE_URL}/api/users`, {
+      const res = await fetch(`${BASE_URL}/api/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, phone })
       });
 
-      if (!supabaseRes.ok) {
-        console.error("Supabase sync failed");
-      }
-
-      // Authenticate with local backend
-      const res = await fetch(`${BASE_URL}/api/auth/signup`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, email, password })
-      });
       const data = await res.json();
       if (res.ok) {
-        setAuth(data.user, data.token);
+        // If the backend returns a user and token, log them in
+        if (data.token && data.user) {
+          setAuth(data.user, data.token);
+        }
         setShowPopup(true);
       } else {
         setError(data.error || 'Signup failed. Please check your details.');
-        if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current.currentTime = 0;
-        }
       }
     } catch (err) {
       setError('Connection failure. Please try again.');
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
     }
   };
 

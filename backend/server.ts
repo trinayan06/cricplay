@@ -186,21 +186,39 @@ async function startServer() {
   app.post("/api/users", async (req: any, res: any) => {
     try {
       console.log("Incoming body:", req.body);
-      console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
-      console.log("SUPABASE_KEY EXISTS:", !!process.env.SUPABASE_KEY);
-
       const { name, email, phone } = req.body;
 
-      const { data, error } = await supabase
+      // 1. Sync with Supabase (Required for persistent data)
+      const { data: supabaseData, error: supabaseError } = await supabase
         .from('users')
         .insert([{ name, email, phone }]);
 
-      if (error) {
-        console.log("SUPABASE ERROR FULL:", JSON.stringify(error, null, 2));
-        return res.status(500).json({ error });
+      if (supabaseError) {
+        console.log("SUPABASE ERROR FULL:", JSON.stringify(supabaseError, null, 2));
+        return res.status(500).json({ error: supabaseError.message });
       }
 
-      return res.json({ success: true, data });
+      // 2. Add to Local Database for internal auth handling
+      // Use Phone as default password if not provided to allow login later
+      const defaultPassword = bcrypt.hashSync(phone, 10);
+      let localUser;
+      try {
+        const result = db.prepare("INSERT INTO users (name, phone, email, password, created_at) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)").run(name, phone, email, defaultPassword);
+        localUser = { id: result.lastInsertRowid, name, email, is_verified: 0, is_admin: 0 };
+      } catch (dbErr) {
+        // If user exists in local DB, fetch them
+        localUser = db.prepare("SELECT id, name, email, is_verified, is_admin FROM users WHERE email = ?").get(email) as any;
+      }
+
+      const token = jwt.sign({ id: localUser.id, email: localUser.email, is_admin: localUser.is_admin, is_verified: localUser.is_verified }, JWT_SECRET);
+
+      return res.json({ 
+        success: true, 
+        user: localUser,
+        token: token,
+        data: supabaseData 
+      });
+
     } catch (err: any) {
       console.error(err);
       res.status(500).json({ error: err.message || "Server error" });
