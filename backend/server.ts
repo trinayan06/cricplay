@@ -185,19 +185,19 @@ async function startServer() {
 
   app.post("/api/users", async (req: any, res: any) => {
     try {
-      const { name, email, phone } = req.body;
-      console.log("Incoming data:", req.body);
+      console.log("Incoming body:", req.body);
       console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
       console.log("SUPABASE_KEY EXISTS:", !!process.env.SUPABASE_KEY);
+
+      const { name, email, phone } = req.body;
 
       const { data, error } = await supabase
         .from('users')
         .insert([{ name, email, phone }]);
 
       if (error) {
-        console.log("SUPABASE ERROR:", error);
         console.log("SUPABASE ERROR FULL:", JSON.stringify(error, null, 2));
-        return res.status(500).json({ error: error.message });
+        return res.status(500).json({ error });
       }
 
       return res.json({ success: true, data });
