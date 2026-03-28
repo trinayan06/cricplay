@@ -186,19 +186,18 @@ async function startServer() {
   app.post("/api/users", async (req: any, res: any) => {
     try {
       const { name, email, phone } = req.body;
-
-      console.log("USER REQUEST:", req.body);
+      console.log("Incoming data:", req.body);
 
       const { data, error } = await supabase
-        .from("users")
-        .insert([{ name, email, phone }])
-        .select();
+        .from('users')
+        .insert([{ name, email, phone }]);
 
-      console.log("USER INSERT:", data, error);
+      if (error) {
+        console.log("SUPABASE ERROR:", error);
+        return res.status(500).json({ error: error.message });
+      }
 
-      if (error) return res.status(500).json(error);
-
-      res.json(data);
+      return res.json({ success: true, data });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: "Server error" });
