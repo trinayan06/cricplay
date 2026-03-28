@@ -82,8 +82,8 @@ export default function Login() {
       
       <div className="w-full max-w-md bg-white p-10 rounded-[3rem] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.08)] border border-black/[0.03] relative z-10 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)]">
         <div className="flex flex-col items-center mb-10">
-          <div className="w-20 h-20 bg-gradient-to-tr from-[#7c3aed] to-[#6366f1] rounded-[2rem] flex items-center justify-center mb-6 shadow-2xl shadow-purple-500/30 transform transition-transform hover:rotate-6 duration-500">
-            <Trophy className="w-10 h-10 text-white" />
+          <div className="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-6 shadow-2xl shadow-purple-500/10 transform transition-transform hover:rotate-6 duration-500 border border-black/5 p-2">
+            <img src="/logo.png" alt="CricPlay Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-4xl font-black text-[#1e1b4b] tracking-tighter uppercase italic">CRICPLAY</h1>
           <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-3 bg-[#f8f5f0] px-4 py-1 rounded-full border border-black/5 shadow-inner">Premium Fantasy League</p>
@@ -158,8 +158,8 @@ export default function Login() {
               <X className="w-4 h-4" />
             </button>
 
-            <div className="w-24 h-24 bg-[#ede9fe] rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-xl shadow-purple-500/10 rotate-12 transition-transform hover:rotate-0 duration-500 border border-purple-100 p-4">
-              <Trophy className="w-full h-full text-[#7c3aed]" />
+            <div className="w-24 h-24 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-xl shadow-purple-500/5 rotate-12 transition-transform hover:rotate-0 duration-500 border border-purple-100 p-2">
+              <img src="/logo.png" alt="CricPlay Logo" className="w-full h-full object-contain" />
             </div>
 
             <h2 className="text-2xl font-black text-[#1e1b4b] mb-3 uppercase tracking-tight italic">Welcome to CRICPLAY!</h2>

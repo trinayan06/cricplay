@@ -13,8 +13,8 @@ export function AdminLayout({ children, title }: { children: React.ReactNode, ti
       <aside className="w-72 bg-white border-r border-black/5 flex flex-col shadow-xl shadow-black/[0.02] sticky top-0 h-screen z-50">
         <div className="p-8 border-b border-black/5">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-gradient-to-tr from-[#7c3aed] to-[#6366f1] rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20">
-              <Swords className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/10 border border-black/5 p-1.5">
+              <img src="/logo.png" alt="CricPlay Logo" className="w-full h-full object-contain" />
             </div>
             <h1 className="text-xl font-black text-[#1e1b4b] uppercase tracking-tighter italic">
               CRICPLAY <span className="text-[10px] block not-italic font-bold text-slate-400 tracking-widest -mt-1">ADMIN-Trinayan, Das, Nikhil</span>

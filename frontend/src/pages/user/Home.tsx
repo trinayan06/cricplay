@@ -60,7 +60,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 active:scale-95 transition-transform">
             <img 
-              src="https://img.sanishtech.com/u/31ad9a8546ed37cf7c4e708edbd45d42.png" 
+              src="/logo.png" 
               alt="CricPlay Logo" 
               className="h-10 w-auto object-contain rounded-xl drop-shadow-sm"
             />
@@ -127,8 +127,8 @@ export default function Home() {
                 </div>
               ) : (
                 <div className="relative w-full aspect-[16/10] rounded-[1.5rem] overflow-hidden border border-black/5 bg-[#ede9fe]/30 flex flex-col items-center justify-center gap-4 text-center p-6">
-                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl border border-purple-100">
-                     <Trophy className="w-8 h-8 text-purple-600" />
+                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl border border-purple-50 p-3">
+                     <img src="/logo.png" className="w-full h-full object-contain grayscale opacity-20" />
                    </div>
                    <div>
                     <h3 className="text-[#1e1b4b] font-black tracking-widest uppercase text-xs mb-1">Coming Soon</h3>

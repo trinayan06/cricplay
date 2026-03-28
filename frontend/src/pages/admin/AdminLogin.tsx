@@ -38,8 +38,8 @@ export default function AdminLogin() {
 
       <div className="w-full max-w-md bg-white p-10 rounded-[3rem] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.08)] border border-black/[0.03] relative z-10 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)]">
         <div className="flex flex-col items-center mb-10">
-          <div className="w-20 h-20 bg-[#ede9fe] rounded-[2rem] flex items-center justify-center mb-6 shadow-xl shadow-purple-500/10 rotate-3 border border-purple-100 p-5 group hover:rotate-0 transition-transform duration-500">
-            <Shield className="w-full h-full text-[#7c3aed]" />
+          <div className="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-6 shadow-xl shadow-purple-500/5 rotate-3 border border-purple-100 p-3 group hover:rotate-0 transition-transform duration-500">
+            <img src="/logo.png" alt="CricPlay Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-3xl font-black text-[#1e1b4b] tracking-tighter uppercase italic leading-none">Admin Console</h1>
           <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-3">Secure Operator Gateway</p>
