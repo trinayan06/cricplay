@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-950: #f8f5f0; /* Page background base */
+  --color-slate-900: #ffffff; /* Primary card base */
+  --color-slate-800: #f1f5f9; /* Secondary card / input base */
+
+  --color-slate-400: #94a3b8; /* Muted descriptor text */
+  --color-slate-500: #64748b; /* Standard subtext */
+  --color-slate-600: #475569; /* Body text */
+  
+  --color-slate-50: #1e1b4b; /* Deep Heading text */
+
+  --color-blue-600: #7c3aed; /* Brand Primary (Purple) */
+  --color-blue-500: #6366f1; /* Brand Secondary (Indigo) */
+}
+
+body {
+  background-color: #f8f5f0;
+  color: #1e1b4b;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* Premium Glass Header */
+  header, .sticky.top-0 {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+    z-index: 40;
+  }
+
+  /* Global Premium Card Styling */
+  .premium-card {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 2rem;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .premium-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Modern Buttons */
+  button[class*="bg-gradient-to"], a[class*="bg-gradient-to"] {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  button[class*="bg-gradient-to"]:not(:disabled):hover, 
+  a[class*="bg-gradient-to"]:not(:disabled):hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+    box-shadow: 0 15px 30px -5px rgba(124, 58, 237, 0.3) !important;
+  }
+
+  /* Universal Soft Shadows */
+  .shadow-xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.04) !important;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03) !important;
+  }
+
+  /* Hide Scrollbars but allow scrolling */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Scrollbar for non-touch devices */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f8f5f0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1;
+  }
+}

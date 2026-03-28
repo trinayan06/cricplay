@@ -1,0 +1,34 @@
+--- USERS SCHEMA ---
+{
+  "sql": "CREATE TABLE users (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    name TEXT NOT NULL,\n    phone TEXT NOT NULL,\n    email TEXT UNIQUE NOT NULL,\n    password TEXT NOT NULL,\n    is_verified INTEGER DEFAULT 0,\n    is_admin INTEGER DEFAULT 0\n  )"
+}
+--- ALL USERS ---
+[
+  {
+    "id": 1,
+    "name": "Admin",
+    "phone": "0000000000",
+    "email": "ipl2026@gmail.com",
+    "password": "$2b$10$oRe8dHdO1TqU0F7DzGjadeF4pKJI95sHnnuAGBV2F5UpIET3EKG6q",
+    "is_verified": 1,
+    "is_admin": 1
+  },
+  {
+    "id": 2,
+    "name": "trinyana",
+    "phone": "9263211969",
+    "email": "ertyuio@gmail.com",
+    "password": "$2b$10$JVdbfdFARb0ePlvFejxAxOoqADZfwU3rdWp6yY4s78kpKrB4adn6m",
+    "is_verified": 1,
+    "is_admin": 0
+  },
+  {
+    "id": 3,
+    "name": "Trinayan Mahanta",
+    "phone": "9864119506",
+    "email": "trinayanmahanta8@gmail.com",
+    "password": "$2b$10$f/V/Oa3SvgNwUbJYC8/jIOfT.A8NU5ZAhpfFLDaqRfOcyy5DS3kUi",
+    "is_verified": 1,
+    "is_admin": 0
+  }
+]

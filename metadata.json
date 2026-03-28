@@ -1,0 +1,5 @@
+{
+  "name": "CRICPLAY",
+  "description": "A full-stack fantasy cricket web application with user and admin interfaces.",
+  "requestFramePermissions": []
+}
