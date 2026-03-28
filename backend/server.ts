@@ -187,6 +187,8 @@ async function startServer() {
     try {
       const { name, email, phone } = req.body;
       console.log("Incoming data:", req.body);
+      console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
+      console.log("SUPABASE_KEY EXISTS:", !!process.env.SUPABASE_KEY);
 
       const { data, error } = await supabase
         .from('users')
@@ -194,13 +196,14 @@ async function startServer() {
 
       if (error) {
         console.log("SUPABASE ERROR:", error);
+        console.log("SUPABASE ERROR FULL:", JSON.stringify(error, null, 2));
         return res.status(500).json({ error: error.message });
       }
 
       return res.json({ success: true, data });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      res.status(500).json({ error: "Server error" });
+      res.status(500).json({ error: err.message || "Server error" });
     }
   });
 
