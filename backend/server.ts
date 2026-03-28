@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import multer from "multer";
 import fs from "fs";
-import { supabase } from "./config/supabase.js";
+import { supabase } from "./config/supabase";
 
 const JWT_SECRET = process.env.JWT_SECRET || "cricplay-super-secret-key-2026";
 const ADMIN_EMAIL = "ipl2026@gmail.com";
@@ -624,7 +624,7 @@ async function startServer() {
   });
 
   app.listen(Number(PORT), "0.0.0.0", () => {
-    console.log(`Backend server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
   });
 }
 

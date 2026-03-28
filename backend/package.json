@@ -2,9 +2,8 @@
   "name": "cricplay-backend",
   "private": true,
   "version": "0.1.0",
-  "type": "module",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "npx ts-node server.ts",
     "dev": "tsx watch server.ts",
     "build": "tsc"
   },
@@ -29,6 +28,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/multer": "^2.1.0",
     "@types/node": "^22.14.0",
+    "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2"
   }
